@@ -14,7 +14,6 @@ pyrootutils.setup_root(__file__, indicator=".project-root", pythonpath=True)
 from src.data.dlib_datamodule import TransformDataset, DlibDataset  # noqa: E402
 
 from src import utils
-from mtcnn.mtcnn import MTCNN # take too much time
 import mediapipe as mp
 from PIL import Image
 

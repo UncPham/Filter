@@ -26,6 +26,7 @@ class DlibLitModule(LightningModule):
         net: torch.nn.Module,
         optimizer: torch.optim.Optimizer,
         scheduler: torch.optim.lr_scheduler,
+        threshold: float
     ):
         super().__init__()
 
@@ -34,6 +35,8 @@ class DlibLitModule(LightningModule):
         self.save_hyperparameters(logger=False, ignore=['net'])
 
         self.net = net
+
+        self.threshold = threshold
 
         # loss function
         self.criterion = torch.nn.MSELoss()
@@ -63,10 +66,7 @@ class DlibLitModule(LightningModule):
         x, y = batch
         preds = self.forward(x)
         loss = self.criterion(preds, y)
-        # print("loss", loss, type(loss))
-        # print("preds", preds, type(preds))
-        # print("y", y, type(y))
-        # exit(0)
+        preds = torch.where(preds > self.threshold, preds, torch.zeros_like(preds))
         return loss, preds, y
 
     def training_step(self, batch: Any, batch_idx: int):
