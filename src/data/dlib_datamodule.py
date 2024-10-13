@@ -117,8 +117,8 @@ class TransformDataset(Dataset):
         image, landmarks = self.dataset[idx]
         image = np.array(image)
         transformed = self.transform(
-            image=image)
-        image = transformed["image"]
+            image=image, keypoints=landmarks)
+        image, landmarks = transformed["image"], transformed["keypoints"]
         _, height, width = image.shape
         landmarks = landmarks / np.array([width, height]) - 0.5
         return image, landmarks.astype(np.float32) # center and normalize
@@ -240,6 +240,7 @@ class DlibDataModule(LightningDataModule):
             num_workers=self.hparams.num_workers,
             pin_memory=self.hparams.pin_memory,
             shuffle=True,
+            persistent_workers=True
         )
 
     def val_dataloader(self):
@@ -249,6 +250,7 @@ class DlibDataModule(LightningDataModule):
             num_workers=self.hparams.num_workers,
             pin_memory=self.hparams.pin_memory,
             shuffle=False,
+            persistent_workers=True
         )
 
     def test_dataloader(self):
