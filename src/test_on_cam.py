@@ -35,16 +35,9 @@ def evaluate(cfg: DictConfig):
     model = model.load_from_checkpoint(cfg.ckpt_path, net=model.net)
     model.eval()
 
-    # log.info("Instantiating loggers...")
-    # logger: List[Logger] = utils.instantiate_loggers(cfg.get("logger"))
-
-    # log.info(f"Instantiating trainer <{cfg.trainer._target_}>")
-    # trainer: Trainer = hydra.utils.instantiate(cfg.trainer, logger=logger)
-
     cap = cv2.VideoCapture(0)
-    # detector = MTCNN()
+
     mp_face_detection = mp.solutions.face_detection
-    # mp_drawing = mp.solutions.drawing_utils
 
 
     while True:
@@ -75,7 +68,6 @@ def evaluate(cfg: DictConfig):
                         # Kiểm tra xem hình ảnh đã cắt có trống hay không
                         if cropped_face.size != 0:
                             transformed = transform(image=cropped_face)['image']
-                            # _, transformed_w, transformed_h = transformed.shape
                             input_transformed = transformed.unsqueeze(0)
 
                             predictions = model(input_transformed)
@@ -94,12 +86,7 @@ def evaluate(cfg: DictConfig):
             for lm in landmarks:
                 annotated_image = DlibDataset.annotate_image_triplot(annotated_image, lm)
                 
-            # annotated_image = annotated_image.squeeze(0)
-            # annotated_image = annotated_image.permute(1, 2, 0).numpy()
             frame = np.array(annotated_image)
-        
-            # Hiển thị khung hình với dự đoán
-            # cv2.imshow('Camera Feed', annotated_image)
         else: 
             print("landmark detection fail!")
 

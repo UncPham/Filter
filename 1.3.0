@@ -1,55 +1,18 @@
-Retrieving notices: ...working... done
-Channels:
- - defaults
- - conda-forge
-Platform: win-64
-Collecting package metadata (repodata.json): ...working... done
-Solving environment: ...working... done
-
-## Package Plan ##
-
-  environment location: C:\Users\Admin\anaconda3\envs\myenv
-
-  added / updated specs:
-    - albumentations
-
-
-The following NEW packages will be INSTALLED:
-
-  albumentations     conda-forge/noarch::albumentations-1.3.1-pyhd8ed1ab_0 
-  aom                pkgs/main/win-64::aom-3.6.0-hd77b12b_0 
-  blosc              pkgs/main/win-64::blosc-1.21.3-h6c2663c_0 
-  brotli             pkgs/main/win-64::brotli-1.0.9-h2bbff1b_8 
-  brotli-bin         pkgs/main/win-64::brotli-bin-1.0.9-h2bbff1b_8 
-  cfitsio            pkgs/main/win-64::cfitsio-3.470-h2bbff1b_7 
-  charls             pkgs/main/win-64::charls-2.2.0-h6c2663c_0 
-  dav1d              pkgs/main/win-64::dav1d-1.2.1-h2bbff1b_0 
-  imagecodecs        pkgs/main/win-64::imagecodecs-2023.1.23-py39h6c6a46e_0 
-  imageio            pkgs/main/win-64::imageio-2.33.1-py39haa95532_0 
-  joblib             pkgs/main/win-64::joblib-1.4.2-py39haa95532_0 
-  lazy_loader        pkgs/main/win-64::lazy_loader-0.4-py39haa95532_0 
-  lcms2              pkgs/main/win-64::lcms2-2.12-h83e58a3_0 
-  libaec             pkgs/main/win-64::libaec-1.0.4-h33f27b4_1 
-  libavif            pkgs/main/win-64::libavif-0.11.1-h2bbff1b_0 
-  libbrotlicommon    pkgs/main/win-64::libbrotlicommon-1.0.9-h2bbff1b_8 
-  libbrotlidec       pkgs/main/win-64::libbrotlidec-1.0.9-h2bbff1b_8 
-  libbrotlienc       pkgs/main/win-64::libbrotlienc-1.0.9-h2bbff1b_8 
-  libzopfli          pkgs/main/win-64::libzopfli-1.0.3-ha925a31_0 
-  networkx           pkgs/main/win-64::networkx-3.2.1-py39haa95532_0 
-  openjpeg           pkgs/main/win-64::openjpeg-2.5.2-hae555c5_0 
-  pillow             pkgs/main/win-64::pillow-10.4.0-py39h827c3e9_0 
-  qudida             conda-forge/noarch::qudida-0.0.4-pyhd8ed1ab_0 
-  scikit-image       pkgs/main/win-64::scikit-image-0.24.0-py39hc64d2fc_0 
-  scikit-learn       pkgs/main/win-64::scikit-learn-1.5.1-py39hc64d2fc_0 
-  threadpoolctl      pkgs/main/win-64::threadpoolctl-3.5.0-py39h9909e9c_0 
-  tifffile           pkgs/main/win-64::tifffile-2023.4.12-py39haa95532_0 
-  typing-extensions  conda-forge/noarch::typing-extensions-4.12.2-hd8ed1ab_0 
-  zfp                pkgs/main/win-64::zfp-1.0.0-hd77b12b_0 
-
-
-Proceed ([y]/n)? 
-
-Downloading and Extracting Packages: ...working... done
-Preparing transaction: ...working... done
-Verifying transaction: ...working... done
-Executing transaction: ...working... done
+Requirement already satisfied: albumentations in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (1.4.18)
+Requirement already satisfied: numpy>=1.24.4 in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from albumentations) (2.0.2)
+Requirement already satisfied: scipy>=1.10.0 in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from albumentations) (1.13.1)
+Requirement already satisfied: scikit-image>=0.21.0 in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from albumentations) (0.24.0)
+Requirement already satisfied: PyYAML in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from albumentations) (6.0)
+Requirement already satisfied: pydantic>=2.7.0 in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from albumentations) (2.9.2)
+Requirement already satisfied: albucore==0.0.17 in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from albumentations) (0.0.17)
+Requirement already satisfied: eval-type-backport in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from albumentations) (0.2.0)
+Requirement already satisfied: opencv-python-headless>=4.9.0.80 in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from albumentations) (4.10.0.84)
+Requirement already satisfied: typing-extensions>=4.9.0 in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from albumentations) (4.12.2)
+Requirement already satisfied: annotated-types>=0.6.0 in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from pydantic>=2.7.0->albumentations) (0.7.0)
+Requirement already satisfied: pydantic-core==2.23.4 in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from pydantic>=2.7.0->albumentations) (2.23.4)
+Requirement already satisfied: networkx>=2.8 in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from scikit-image>=0.21.0->albumentations) (3.2.1)
+Requirement already satisfied: pillow>=9.1 in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from scikit-image>=0.21.0->albumentations) (9.5.0)
+Requirement already satisfied: imageio>=2.33 in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from scikit-image>=0.21.0->albumentations) (2.35.1)
+Requirement already satisfied: tifffile>=2022.8.12 in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from scikit-image>=0.21.0->albumentations) (2024.8.30)
+Requirement already satisfied: packaging>=21 in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from scikit-image>=0.21.0->albumentations) (24.1)
+Requirement already satisfied: lazy-loader>=0.4 in c:\users\admin\anaconda3\envs\myenv\lib\site-packages (from scikit-image>=0.21.0->albumentations) (0.4)

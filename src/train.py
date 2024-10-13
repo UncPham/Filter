@@ -33,6 +33,7 @@ from src import utils
 
 log = utils.get_pylogger(__name__)
 
+os.environ['HYDRA_FULL_ERROR'] = '1'
 
 @utils.task_wrapper
 def train(cfg: DictConfig) -> Tuple[dict, dict]:

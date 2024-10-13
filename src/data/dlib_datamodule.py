@@ -37,7 +37,7 @@ class DlibDataset(Dataset):
         cropped_image: Image = original_image.crop(
             (box_left, box_top, box_left+box_width, box_top+box_height))
 
-        return original_image, landmarks # unnormalized
+        return cropped_image, landmarks # unnormalized
 
     def _load_data(self, data_dir: str, xml_file: str):
         """Load data from xml file."""
@@ -117,8 +117,8 @@ class TransformDataset(Dataset):
         image, landmarks = self.dataset[idx]
         image = np.array(image)
         transformed = self.transform(
-            image=image, keypoints=landmarks)
-        image, landmarks = transformed["image"], transformed["keypoints"]
+            image=image)
+        image = transformed["image"]
         _, height, width = image.shape
         landmarks = landmarks / np.array([width, height]) - 0.5
         return image, landmarks.astype(np.float32) # center and normalize
