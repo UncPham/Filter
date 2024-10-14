@@ -4,13 +4,12 @@ keypoint_params:
   format: "xy"
   remove_invisible: false
 transforms:
-# - _target_: albumentations.ShiftScaleRotate
-#   shift_limit: 0.05
-#   scale_limit: 0.05
-#   rotate_limit: 15
-#   p: 0.6
-- _target_: albumentations.HorizontalFlip
-  p: 0.5
+- _target_: albumentations.ShiftScaleRotate
+  shift_limit: 0.05
+  scale_limit: 0.05
+  rotate_limit: 15
+  border_mode: 1
+  p: 0.6
 - _target_: albumentations.SmallestMaxSize
   max_size: 518
   always_apply: true

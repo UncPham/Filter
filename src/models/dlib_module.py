@@ -26,7 +26,7 @@ class DlibLitModule(LightningModule):
         net: torch.nn.Module,
         optimizer: torch.optim.Optimizer,
         scheduler: torch.optim.lr_scheduler,
-        threshold: float
+        # threshold: float
     ):
         super().__init__()
 
@@ -36,7 +36,7 @@ class DlibLitModule(LightningModule):
 
         self.net = net
 
-        self.threshold = threshold
+        # self.threshold = threshold
 
         # loss function
         self.criterion = torch.nn.MSELoss()
@@ -66,7 +66,7 @@ class DlibLitModule(LightningModule):
         x, y = batch
         preds = self.forward(x)
         loss = self.criterion(preds, y)
-        preds = torch.where(preds > self.threshold, preds, torch.zeros_like(preds))
+        # preds = torch.where(preds > self.threshold, preds, torch.zeros_like(preds))
         return loss, preds, y
 
     def training_step(self, batch: Any, batch_idx: int):
@@ -85,7 +85,7 @@ class DlibLitModule(LightningModule):
         # remember to always return loss from `training_step()` or backpropagation will fail!
         return {"loss": loss, "preds": preds, "targets": targets}
 
-    def on_train_epoch_end(self, outputs: List[Any]):
+    def on_train_epoch_end(self):
         # `outputs` is a list of dicts returned from `training_step()`
 
         # Warning: when overriding `training_epoch_end()`, lightning accumulates outputs from all batches of the epoch
@@ -134,7 +134,7 @@ class DlibLitModule(LightningModule):
         _, preds, _ = self.model_step(batch)
         return preds
 
-    def test_epoch_end(self, outputs: List[Any]):
+    def on_test_epoch_end(self):
         pass
 
     def configure_optimizers(self):

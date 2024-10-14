@@ -21,6 +21,7 @@ pytest          # tests
 numpy
 pandas
 mediapipe       # face detection
+kagglehub       # api download data
 # sh            # for running bash commands in some tests (linux/macos only)
 
 # --------- data augmentation --------- #

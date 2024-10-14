@@ -12,6 +12,7 @@ import numpy as np
 
 pyrootutils.setup_root(__file__, indicator=".project-root", pythonpath=True)
 from src.data.dlib_datamodule import TransformDataset, DlibDataset  # noqa: E402
+from src.models.dlib_module import DlibLitModule
 
 from src import utils
 import mediapipe as mp
@@ -32,7 +33,7 @@ def evaluate(cfg: DictConfig):
     transform: Compose = hydra.utils.instantiate(cfg.data.transform_val)
 
     log.info(f"Loading model from checkpoint {cfg.ckpt_path}")
-    model = model.load_from_checkpoint(cfg.ckpt_path, net=model.net)
+    model = DlibLitModule.load_from_checkpoint(cfg.ckpt_path, net=model.net)
     model.eval()
 
     cap = cv2.VideoCapture(0)
